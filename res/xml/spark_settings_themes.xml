@@ -26,6 +26,14 @@
 
      </PreferenceCategory>
 
+    <com.spark.support.preferences.SystemSettingListPreference
+        android:key="settings_dashboard_style"
+        android:title="@string/settings_dashboard_style_title"
+        android:entries="@array/settings_dashboard_style_entries"
+        android:entryValues="@array/settings_dashboard_style_values"
+        android:summary="%s"
+        android:defaultValue="0" />
+
     <PreferenceCategory
         android:key="theme_customization_category"
         android:title="@string/theme_customization_category">
@@ -102,78 +110,6 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory
-        android:title="@string/brightness_slider">
-
-        <com.spark.support.preferences.SystemSettingListPreference
-            android:key="brightness_slider_position"
-            android:title="@string/brightness_slider_position_title"
-            android:summary="%s"
-            android:entries="@array/brightness_slider_position_entries"
-            android:entryValues="@array/brightness_slider_position_values"
-            android:defaultValue="0" />
-
-        <com.spark.support.preferences.SystemSettingSwitchPreference
-            android:key="qqs_show_brightness"
-            android:title="@string/qqs_show_brightness_title"
-            android:defaultValue="false" />
-
-        <com.spark.support.preferences.SystemSettingSwitchPreference
-            android:key="show_auto_brightness_button"
-            android:title="@string/show_auto_brightness_button_title"
-            android:defaultValue="false" />
-    </PreferenceCategory>
-
-     <PreferenceCategory
-        android:title="@string/qs_footer_category">
-
-    <!-- QS footer text toggle -->
-    <com.spark.support.preferences.SystemSettingSwitchPreference
-        android:key="qs_footer_text_show"
-        android:title="@string/qs_footer_text_show_title"
-        android:defaultValue="false" />
-
-    <!-- QS footer text string -->
-    <com.spark.settings.preferences.SystemSettingEditTextPreference
-        android:key="qs_footer_text_string"
-        android:title="@string/qs_footer_text_string_title"
-        android:summary="@string/qs_footer_text_string_summary"
-        android:dependency="qs_footer_text_show"
-        android:defaultValue="Spark" />
-
-        <com.spark.support.preferences.SystemSettingSwitchPreference
-            android:key="qs_footer_warnings"
-            android:title="@string/qs_footer_warnings_title"
-            android:summary="@string/qs_footer_warnings_summary"
-            android:defaultValue="true"/>
-
-        <com.spark.support.preferences.SystemSettingSwitchPreference
-            android:key="qs_footer_show_user"
-            android:title="@string/qs_footer_users_icon_title"
-            android:summary="@string/qs_footer_users_icon_summary"
-            android:defaultValue="true" />
-
-        <com.spark.support.preferences.SystemSettingSwitchPreference
-            android:key="qs_footer_show_edit"
-            android:title="@string/qs_footer_edit_icon_title"
-            android:defaultValue="true" />
-
-        <com.spark.support.preferences.SystemSettingSwitchPreference
-            android:key="qs_footer_show_power_menu"
-            android:title="@string/qs_footer_show_power_menu_title"
-            android:defaultValue="true" />
-
-        <com.spark.support.preferences.SystemSettingSwitchPreference
-            android:key="qs_footer_show_services"
-            android:title="@string/qs_footer_services_icon_title"
-            android:defaultValue="false" />
-
-        <com.spark.support.preferences.SystemSettingSwitchPreference
-            android:key="qs_footer_show_settings"
-            android:title="@string/qs_footer_settings_icon_title"
-            android:defaultValue="true" />
-    </PreferenceCategory>
-
      <PreferenceCategory
         android:title="@string/notification_material_dismiss_button_title">
 
@@ -196,7 +132,7 @@
             android:title="@string/clearall_bgstyle_title"
             android:dependency="notification_material_dismiss"
             android:defaultValue="0"
-            android:max="2"   
+            android:max="2"
             settings:min="0" />
 
     </PreferenceCategory>

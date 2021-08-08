@@ -3,9 +3,6 @@ package com.spark.settings.fragments;
 import com.android.internal.logging.nano.MetricsProto;
 
 import android.os.Bundle;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
 import android.os.UserHandle;
 import com.android.settings.development.OverlayCategoryPreferenceController;
 import android.content.ContentResolver;
@@ -16,20 +13,14 @@ import android.content.om.IOverlayManager;
 import android.content.res.Resources;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
-import androidx.preference.PreferenceGroup;
 import androidx.preference.PreferenceScreen;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.Preference.OnPreferenceChangeListener;
 import androidx.preference.PreferenceFragment;
-import androidx.preference.SwitchPreference;
 import android.provider.Settings;
-import com.spark.settings.preferences.SystemSettingEditTextPreference;
-import com.spark.support.preferences.SystemSettingMasterSwitchPreference;
 import com.spark.support.preferences.SystemSettingListPreference;
 import com.android.settings.R;
 import com.android.settings.dashboard.DashboardFragment;
-import java.util.Locale;
-import android.text.TextUtils;
 import android.content.Context;
 import androidx.fragment.app.Fragment;
 import android.view.View;
@@ -48,12 +39,9 @@ import android.os.ServiceManager;
 import static android.os.UserHandle.USER_CURRENT;
 import java.util.List;
 import java.util.ArrayList;
+
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settingslib.search.SearchIndexable;
-import java.util.Map;
-import java.util.HashMap;
-import java.util.Collections;
-import java.util.regex.Pattern;
 
 @SearchIndexable(forTarget = SearchIndexable.ALL & ~SearchIndexable.ARC)
 public class ThemeSettings extends DashboardFragment implements
@@ -77,18 +65,6 @@ public class ThemeSettings extends DashboardFragment implements
         final ContentResolver resolver = getActivity().getContentResolver();
 
         PreferenceScreen prefSet = getPreferenceScreen();
-
-        mFooterString = (SystemSettingEditTextPreference) findPreference(QS_FOOTER_TEXT_STRING);
-        mFooterString.setOnPreferenceChangeListener(this);
-        String footerString = Settings.System.getString(getContentResolver(),
-                QS_FOOTER_TEXT_STRING);
-        if (footerString != null && !footerString.isEmpty())
-            mFooterString.setText(footerString);
-        else {
-            mFooterString.setText("Spark");
-            Settings.System.putString(getActivity().getContentResolver(),
-                    Settings.System.QS_FOOTER_TEXT_STRING, "Spark");
-        }
     }
 
     @Override
@@ -99,16 +75,6 @@ public class ThemeSettings extends DashboardFragment implements
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         ContentResolver resolver = getActivity().getContentResolver();
-        if (preference == mFooterString) {
-            String value = (String) newValue;
-            if (value != "" && !value.isEmpty())
-                Settings.System.putString(getActivity().getContentResolver(),
-                        Settings.System.QS_FOOTER_TEXT_STRING, value);
-            else {
-                mFooterString.setText("Spark");
-                Settings.System.putString(getActivity().getContentResolver(),
-                        Settings.System.QS_FOOTER_TEXT_STRING, "Spark");
-            }
             return true;
         }
         return false;
