@@ -65,11 +65,9 @@ public class MiscSettings extends SettingsPreferenceFragment implements
                     }
             }, 1000);
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
-
 
     @Override
     public int getMetricsCategory() {

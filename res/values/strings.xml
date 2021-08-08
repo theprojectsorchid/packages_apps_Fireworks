@@ -2,15 +2,30 @@
     <string name="app_name">Fireworks</string>
     <string name="default_string">Default</string>
     <string name="disabled">Disabled</string>
-    <!-- Categories -->
-    <string name="themes_title">Themes</string>
+
+    <!-- Header titles -->
+    <string name="quick_settings_title">Quick Settings</string>
+    <string name="quicksettings_title">Quick Settings</string>
+    <string name="notif_title">Notifications</string>
+    <string name="power_title">Power Menu</string>
+    <string name="gesture_title">Gestures</string>
     <string name="gestures_title">Gestures</string>
-    <string name="lockscreen_title">Lock screen</string>
+    <string name="themes_title">Theming</string>
+    <string name="lockscreen_title">Lockscreen</string>
     <string name="misc_title">Miscellaneous</string>
     <string name="powermenu_title">Power menu</string>
     <string name="statusbar_title">Status bar</string>
     <string name="udfps_category">Udfps</string>
     <string name="buttons_title">Buttons</string>
+
+    <string name="statusbar_summary">Clock &amp; date, <b>Traffic Indicator</b>, Battery Styles, Statusbar items</string>
+    <string name="qs_summary"><b>Brightness slider</b>, Secure lockscreen, QS media player, Quick pulldown, Tile animations</string>
+    <string name="notif_summary">Heads UP, <b>Ambient</b>, Notification Headers, Re-ticker, In-call vibration</string>
+    <string name="theme_summary">Monet, Black theme, RGB picker, Icon packs, Icon shapes, <b>Clock styles</b></string>
+    <string name="gesture_summary"><b>Brightness control</b>, Tap to wake/sleep, Toggle torch when screen off, Volume rocker</string>
+    <string name="power_summary">Disable on lockscreen, <b>Advanced reboot</b> display options can be found here</string>
+    <string name="ui_summary">Lockscreen shortcuts, <b>FP icons and animations</b>, Screenoff FOD, Media art, AOD schedule</string>
+    <string name="misc_summary"><b>Game Space</b>, Ad-block, Volume steps, Animations, CPU info, Wallpaper Zoom</string>
 
     <!-- Display tap to wake custom summary -->
     <string name="tap_to_wake_summary_spark">Double-tap anywhere on the screen to wake or sleep device</string>
