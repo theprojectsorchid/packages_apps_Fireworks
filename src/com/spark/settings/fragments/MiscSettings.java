@@ -39,6 +39,7 @@ public class MiscSettings extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
 
     private static final String PREF_ADBLOCK = "persist.spark.hosts_block";
+    private static final String PREF_CPUINFO = "show_cpu_overlay";
 
     private Handler mHandler = new Handler();
 
@@ -50,7 +51,7 @@ public class MiscSettings extends SettingsPreferenceFragment implements
 
         PreferenceScreen prefSet = getPreferenceScreen();
         findPreference(PREF_ADBLOCK).setOnPreferenceChangeListener(this);
-
+        findPreference(PREF_CPUINFO).setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -65,8 +66,22 @@ public class MiscSettings extends SettingsPreferenceFragment implements
                     }
             }, 1000);
             return true;
+        } else if (PREF_CPUINFO.equals(preference.getKey())) {
+            toggleCpuService((boolean) objValue ? 1 : 0);
+            return true;
         }
         return false;
+    }
+    
+    protected void toggleCpuService(int enabled) {
+        Intent service = (new Intent())
+                .setClassName("com.android.systemui",
+                "com.android.systemui.CPUInfoService");
+        if (enabled == 0) {
+            getContext().stopService(service);
+        } else {
+            getContext().startService(service);
+        }
     }
 
     @Override
