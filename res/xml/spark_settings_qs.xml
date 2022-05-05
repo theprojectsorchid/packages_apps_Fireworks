@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2021 Project Spark
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+          http://www.apache.org/licenses/LICENSE-2.0
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/quick_settings_title"
+    xmlns:settings="http://schemas.android.com/apk/res-auto">
+
+    <com.spark.support.preferences.SystemSettingListPreference
+        android:key="status_bar_quick_qs_pulldown"
+        android:title="@string/status_bar_quick_qs_pulldown"
+        android:entries="@array/quick_pulldown_entries"
+        android:entryValues="@array/quick_pulldown_values"
+        android:defaultValue="0" />
+
+    <com.spark.support.preferences.SystemSettingSeekBarPreference
+        android:key="qs_transparency"
+        android:title="@string/qs_transparency_title"
+        android:summary="@string/qs_transparency_summary"
+        android:defaultValue="10"
+        settings:interval="1"
+        android:max="10"         
+        android:min="1" />
+
+    <PreferenceCategory
+        android:title="@string/brightness_slider">
+
+        <com.spark.support.preferences.SystemSettingListPreference
+            android:key="brightness_slider_position"
+            android:title="@string/brightness_slider_position_title"
+            android:summary="%s"
+            android:entries="@array/brightness_slider_position_entries"
+            android:entryValues="@array/brightness_slider_position_values"
+            android:defaultValue="0" />
+
+        <com.spark.support.preferences.SystemSettingSwitchPreference
+            android:key="qqs_show_brightness"
+            android:title="@string/qqs_show_brightness_title"
+            android:defaultValue="false" />
+
+        <com.spark.support.preferences.SystemSettingSwitchPreference
+            android:key="show_auto_brightness_button"
+            android:title="@string/show_auto_brightness_button_title"
+            android:defaultValue="false" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/qs_footer_category">
+
+    <!-- Qs battery customizations -->
+    <PreferenceCategory
+        android:title="@string/qs_battery_category_title" >
+
+        <!-- Battery styles -->
+        <com.spark.support.preferences.SystemSettingListPreference
+            android:key="qs_battery_style"
+            android:title="@string/status_bar_battery_style_title"
+            android:entries="@array/qs_battery_style_entries"
+            android:entryValues="@array/qs_battery_style_values"
+            android:defaultValue="-1" />
+
+        <!-- Battery percent -->
+        <com.spark.support.preferences.SystemSettingListPreference
+            android:key="qs_show_battery_percent"
+            android:title="@string/status_bar_battery_percent_title"
+            android:entries="@array/status_bar_battery_percent_entries"
+            android:entryValues="@array/status_bar_battery_percent_values"
+            android:defaultValue="2" />
+
+        <!-- Battery estimate -->
+        <com.spark.support.preferences.SystemSettingSwitchPreference
+            android:key="qs_show_battery_estimate"
+            android:title="@string/battery_estimate_title"
+            android:summary="@string/battery_estimate_summary" />
+
+    </PreferenceCategory>
+
+    <!-- QS footer text toggle -->
+    <com.spark.support.preferences.SystemSettingSwitchPreference
+        android:key="qs_footer_text_show"
+        android:title="@string/qs_footer_text_show_title"
+        android:defaultValue="false" />
+
+    <!-- QS footer text string -->
+    <com.spark.settings.preferences.SystemSettingEditTextPreference
+        android:key="qs_footer_text_string"
+        android:title="@string/qs_footer_text_string_title"
+        android:summary="@string/qs_footer_text_string_summary"
+        android:dependency="qs_footer_text_show"
+        android:defaultValue="Spark" />
+
+        <com.spark.support.preferences.SystemSettingSwitchPreference
+            android:key="qs_footer_warnings"
+            android:title="@string/qs_footer_warnings_title"
+            android:summary="@string/qs_footer_warnings_summary"
+            android:defaultValue="true"/>
+
+        <com.spark.support.preferences.SystemSettingSwitchPreference
+            android:key="qs_footer_show_user"
+            android:title="@string/qs_footer_users_icon_title"
+            android:summary="@string/qs_footer_users_icon_summary"
+            android:defaultValue="true" />
+
+        <com.spark.support.preferences.SystemSettingSwitchPreference
+            android:key="qs_footer_show_edit"
+            android:title="@string/qs_footer_edit_icon_title"
+            android:defaultValue="true" />
+
+        <com.spark.support.preferences.SystemSettingSwitchPreference
+            android:key="qs_footer_show_power_menu"
+            android:title="@string/qs_footer_show_power_menu_title"
+            android:defaultValue="true" />
+
+        <com.spark.support.preferences.SystemSettingSwitchPreference
+            android:key="qs_footer_show_services"
+            android:title="@string/qs_footer_services_icon_title"
+            android:defaultValue="false" />
+
+        <com.spark.support.preferences.SystemSettingSwitchPreference
+            android:key="qs_footer_show_settings"
+            android:title="@string/qs_footer_settings_icon_title"
+            android:defaultValue="true" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/media_category">
+
+        <com.spark.support.preferences.SystemSettingSwitchPreference
+            android:key="artwork_media_background"
+            android:title="@string/artwork_media_background_title"
+            android:summary="@string/artwork_media_background_summary"
+            android:defaultValue="false" />
+
+        <com.spark.support.preferences.SystemSettingSwitchPreference
+            android:key="artwork_media_background_enable_blur"
+            android:title="@string/artwork_media_background_enable_blur_title"
+            android:dependency="artwork_media_background"
+            android:defaultValue="false" />
+
+        <com.spark.support.preferences.SystemSettingSeekBarPreference
+            android:key="artwork_media_background_blur_radius"
+            android:title="@string/artwork_media_background_blur_radius_title"
+            android:dependency="artwork_media_background_enable_blur"
+            android:defaultValue="1"
+            android:max="25"
+            settings:min="1" />
+
+        <com.spark.support.preferences.SystemSettingSeekBarPreference
+            android:key="artwork_media_background_alpha"
+            android:title="@string/artwork_media_background_alpha_title"
+            android:dependency="artwork_media_background"
+            android:defaultValue="255"
+            android:max="255"
+            settings:min="0" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
