@@ -29,7 +29,7 @@
         android:defaultValue="10"
         settings:interval="1"
         android:max="10"         
-        android:min="1" />
+        android:min="0" />
 
     <PreferenceCategory
         android:title="@string/brightness_slider">
