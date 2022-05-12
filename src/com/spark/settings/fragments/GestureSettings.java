@@ -48,8 +48,11 @@ public class GestureSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
 
     private static final String TORCH_POWER_BUTTON_GESTURE = "torch_power_button_gesture";
+    private static final String DOUBLE_TAP_SLEEP_GESTURE = "double_tap_sleep_gesture";
+    private static final String DOUBLE_TAP_SLEEP_LOCKSCREEN = "double_tap_sleep_lockscreen";
 
     private ListPreference mTorchPowerButton;
+    private SystemSettingSwitchPreference mDoubleTapSleepGesture;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -65,6 +68,14 @@ public class GestureSettings extends SettingsPreferenceFragment implements
         mTorchPowerButton.setValue(Integer.toString(mTorchPowerButtonValue));
         mTorchPowerButton.setSummary(mTorchPowerButton.getEntry());
         mTorchPowerButton.setOnPreferenceChangeListener(this);
+        
+        // sync dt2s on lockscreen with dt2s on statusbar
+        mDoubleTapSleepGesture = (SystemSettingSwitchPreference) findPreference(DOUBLE_TAP_SLEEP_GESTURE);
+        int mDoubleTapEnabled = Settings.System.getInt(resolver,
+                Settings.System.DOUBLE_TAP_SLEEP_GESTURE, 0);
+        Settings.System.putInt(resolver, Settings.System.DOUBLE_TAP_SLEEP_LOCKSCREEN,
+                mDoubleTapEnabled);
+        mDoubleTapSleepGesture.setOnPreferenceChangeListener(this);
 
     }
 
@@ -78,6 +89,11 @@ public class GestureSettings extends SettingsPreferenceFragment implements
                     mTorchPowerButton.getEntries()[index]);
             Settings.System.putInt(resolver, Settings.System.TORCH_POWER_BUTTON_GESTURE,
                     mTorchPowerButtonValue);
+            return true;
+        } else if (preference == mDoubleTapSleepGesture) {
+            boolean mDoubleTapEnabled = (Boolean) newValue;
+            Settings.System.putInt(resolver, Settings.System.DOUBLE_TAP_SLEEP_LOCKSCREEN,
+                    mDoubleTapEnabled ? 1 : 0);
             return true;
         }
         return false;

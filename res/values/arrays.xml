@@ -567,6 +567,7 @@
         <item>@string/settings_dashboard_style_oos12</item>
         <item>@string/settings_dashboard_style_spark</item>
         <item>@string/settings_dashboard_style_spark_clean</item>
+        <item>@string/settings_dashboard_style_dot</item>
     </string-array>
 
     <string-array name="settings_dashboard_style_values" translatable="false">
@@ -575,5 +576,6 @@
         <item>2</item>
         <item>3</item>
         <item>4</item>
+        <item>5</item>
     </string-array>
 </resources>
