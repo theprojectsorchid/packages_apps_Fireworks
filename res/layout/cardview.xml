@@ -55,7 +55,7 @@
             android:layout_gravity="end"
             android:id="@android:id/icon"
             android:layout_width="0dp"
-            android:layout_height="150dp"
+            android:layout_height="120dp"
             android:layout_weight="1.25"
             android:src="@drawable/power" />
     </LinearLayout>

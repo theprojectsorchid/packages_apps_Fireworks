@@ -15,71 +15,78 @@
     android:title="@string/statusbar_title"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
+    <!-- Brightness control -->
+    <com.spark.support.preferences.SystemSettingSwitchPreference
+        android:key="status_bar_brightness_control"
+        android:title="@string/status_bar_brightness_control_title"
+        android:summary="@string/status_bar_brightness_control_summary"
+        android:defaultValue="false" />
+
     <!-- Status bar icons customizations -->
     <PreferenceCategory
         android:title="@string/status_bar_icons_category_title">
 
-    <Preference
-        android:key="systemui_tuner_statusbar"
-        android:title="@string/statusbar_items_category">
-        <intent android:action="android.intent.action.MAIN"
-            android:targetPackage="com.android.systemui"
-            android:targetClass="com.android.systemui.tuner.StatusbarItemsActivity" />
-    </Preference>
+        <Preference
+            android:key="systemui_tuner_statusbar"
+            android:title="@string/statusbar_items_category">
+            <intent android:action="android.intent.action.MAIN"
+                android:targetPackage="com.android.systemui"
+                android:targetClass="com.android.systemui.tuner.StatusbarItemsActivity" />
+        </Preference>
 
-    <!-- Network traffic -->
-    <Preference
-        android:key="traffic"
-        android:title="@string/traffic_title"
-        android:summary="@string/traffic_summary"
-        android:fragment="com.spark.settings.fragments.Traffic" />
+        <!-- Network traffic -->
+        <Preference
+            android:key="traffic"
+            android:title="@string/traffic_title"
+            android:summary="@string/traffic_summary"
+            android:fragment="com.spark.settings.fragments.Traffic" />
 
-    <Preference
-        android:key="clock"
-        android:title="@string/status_bar_clock_title"
-        android:summary="@string/status_bar_clock_summary"
-        android:fragment="com.spark.settings.fragments.Clock" />
+        <Preference
+            android:key="clock"
+            android:title="@string/status_bar_clock_title"
+            android:summary="@string/status_bar_clock_summary"
+            android:fragment="com.spark.settings.fragments.Clock" />
 
-    <Preference
-        android:key="batterybar"
-        android:title="@string/battery_bar_title"
-        android:summary="@string/battery_bar_summary"
-        android:fragment="com.spark.settings.fragments.BatteryBar" />
+        <Preference
+            android:key="batterybar"
+            android:title="@string/battery_bar_title"
+            android:summary="@string/battery_bar_summary"
+            android:fragment="com.spark.settings.fragments.BatteryBar" />
 
-    <!-- Show logo on Statusbar -->
-    <Preference
-        android:key="status_bar_logo"
-        android:title="@string/status_bar_logo_title"
-        android:summary="@string/status_bar_logo_summary"
-        android:fragment="com.spark.settings.fragments.StatusBarLogo" />
+        <!-- Show logo on Statusbar -->
+        <Preference
+            android:key="status_bar_logo"
+            android:title="@string/status_bar_logo_title"
+            android:summary="@string/status_bar_logo_summary"
+            android:fragment="com.spark.settings.fragments.StatusBarLogo" />
 
-    <com.spark.support.preferences.SystemSettingSwitchPreference
-        android:key="statusbar_colored_icons"
-        android:title="@string/statusbar_colored_icons_title"
-        android:summary="@string/statusbar_colored_icons_summary"
-        android:defaultValue="false" />
+        <com.spark.support.preferences.SystemSettingSwitchPreference
+            android:key="statusbar_colored_icons"
+            android:title="@string/statusbar_colored_icons_title"
+            android:summary="@string/statusbar_colored_icons_summary"
+            android:defaultValue="false" />
 
-    <com.spark.support.preferences.SystemSettingSwitchPreference
+       <com.spark.support.preferences.SystemSettingSwitchPreference
             android:key="statusbar_notif_count"
             android:title="@string/status_bar_notif_count_title"
             android:summary="@string/status_bar_notif_count_summary"
             android:defaultValue="false" />
 
-    <!-- Location privacy indicator -->
-    <com.spark.support.preferences.SecureSettingSwitchPreference
+        <!-- Location privacy indicator -->
+        <com.spark.support.preferences.SecureSettingSwitchPreference
             android:key="enable_location_privacy_indicator"
             android:title="@string/location_privacy_indicator_title"
             android:summary="@string/location_privacy_indicator_summary"
             android:defaultValue="false" />
 
-    <!-- Mic/Camera privacy indicator --> 
-    <com.spark.support.preferences.SecureSettingSwitchPreference
+        <!-- Mic/Camera privacy indicator -->
+       <com.spark.support.preferences.SecureSettingSwitchPreference
             android:key="enable_camera_privacy_indicator"
             android:title="@string/mic_camera_privacy_indicator_title"
             android:summary="@string/mic_camera_privacy_indicator_summary"
             android:defaultValue="true" />
 
-    <com.spark.support.preferences.SystemSettingSwitchPreference
+        <com.spark.support.preferences.SystemSettingSwitchPreference
             android:key="use_old_mobiletype"
             android:title="@string/use_old_mobiletype_title"
             android:summary="@string/use_old_mobiletype_summary"
@@ -106,7 +113,8 @@
         <com.spark.support.preferences.SystemSettingSwitchPreference
             android:key="combined_status_bar_signal_icons"
             android:title="@string/combined_status_bar_signal_icons_title"
-            android:summary="@string/combined_status_bar_signal_icons_summary" />
+            android:summary="@string/combined_status_bar_signal_icons_summary"
+            android:defaultValue="false"/>
 
         <com.spark.support.preferences.SystemSettingSeekBarPreference
             android:key="volte_icon_style"
@@ -134,7 +142,7 @@
             android:summary="@string/volte_vowifi_override_summary"
             android:defaultValue="true"/>
 
-</PreferenceCategory>
+    </PreferenceCategory>
 
     <!-- Status bar battery customizations -->
     <PreferenceCategory

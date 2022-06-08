@@ -42,7 +42,7 @@ public class ThemeSettings extends DashboardFragment implements
     private SystemSettingListPreference mSettingsDashBoardStyle;
     private SystemSettingSwitchPreference mAltSettingsLayout;
     private SystemSettingSwitchPreference mUseStockLayout;
-    private SystemSettingSwitchPreference mDisableUserCard; 
+    private SystemSettingSwitchPreference mDisableUserCard;
 
     @Override
     public void onCreate(Bundle icicle) {

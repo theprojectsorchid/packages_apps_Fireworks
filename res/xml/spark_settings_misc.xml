@@ -18,7 +18,7 @@
     <PreferenceCategory
         android:key="animations_category"
         android:title="@string/animations_category">
- 
+
         <com.spark.support.preferences.SystemSettingListPreference
             android:key="screen_off_animation"
             android:title="@string/screen_off_animation_title"
@@ -45,16 +45,14 @@
         android:key="misc_general_category"
         android:title="@string/general_category">
 
-        <!-- Gaming mode -->
-        <Preference
-            android:key="gaming_mode"
-            android:title="@string/gaming_mode_title"
-            android:summary="@string/gaming_mode_summary">
-
-        <intent
-            android:action="android.intent.action.MAIN"
-            android:targetPackage="org.exthmui.game"
-            android:targetClass="org.exthmui.game.ui.MainActivity" />
+    <!-- Game Space -->
+    <Preference
+        android:key="game_settings"
+        android:title="@string/game_space_title"
+        android:summary="@string/game_space_summary">
+        <intent android:action="android.intent.action.MAIN"
+            android:targetPackage="io.chaldeaprjkt.gamespace"
+            android:targetClass="io.chaldeaprjkt.gamespace.settings.SettingsActivity" />
     </Preference>
 
     <!-- Hidden apps -->
@@ -217,7 +215,7 @@
 
     <PreferenceCategory
         android:key="app_switch_key"
-        android:title="@string/hardware_keys_appswitch_key_title">        
+        android:title="@string/hardware_keys_appswitch_key_title">
 
         <com.spark.settings.preferences.ActionPreference
             android:key="hwkeys_button_overview_single_tap"
@@ -241,7 +239,7 @@
 
     <PreferenceCategory
         android:key="menu_key"
-        android:title="@string/hardware_keys_menu_key_title">        
+        android:title="@string/hardware_keys_menu_key_title">
 
         <com.spark.settings.preferences.ActionPreference
             android:key="hwkeys_button_menu_single_tap"
