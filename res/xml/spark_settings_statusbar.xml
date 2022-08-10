@@ -16,16 +16,17 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
     <!-- Status bar icons customizations -->
-    <PreferenceCategory
-        android:title="@string/status_bar_icons_category_title">
+    <PreferenceCategory>
 
-    <Preference
-        android:key="systemui_tuner_statusbar"
-        android:title="@string/statusbar_items_category">
-        <intent android:action="android.intent.action.MAIN"
-            android:targetPackage="com.android.systemui"
-            android:targetClass="com.android.systemui.tuner.StatusbarItemsActivity" />
-    </Preference>
+        <Preference
+            android:key="systemui_tuner_statusbar"
+            android:title="@string/statusbar_items_category">
+            <intent android:action="android.intent.action.MAIN"
+                android:targetPackage="com.android.systemui"
+                android:targetClass="com.android.systemui.tuner.StatusbarItemsActivity" />
+        </Preference>
+
+    </PreferenceCategory>
 
     <com.spark.support.preferences.SystemSettingSeekBarPreference
         android:key="max_visible_notification_icons"
@@ -36,6 +37,25 @@
         android:max="10"
         settings:min="0"
         settings:units="" />
+
+    <PreferenceCategory
+        android:key="statusbar_padding"
+        android:title="@string/statusbar_padding">
+
+        <com.spark.support.preferences.SystemSettingSeekBarPreference
+            android:key="statusbar_left_padding"
+            android:title="@string/statusbar_left_padding"
+            android:max="100"
+            android:min="0"/>
+
+        <com.spark.support.preferences.SystemSettingSeekBarPreference
+            android:key="statusbar_right_padding"
+            android:title="@string/statusbar_right_padding"
+            android:max="100"
+            android:min="0"/>
+
+    </PreferenceCategory>
+
 
     <com.spark.support.preferences.SystemSettingListPreference
         android:key="status_bar_clock"
@@ -78,81 +98,79 @@
         android:defaultValue="false" />
 
     <com.spark.support.preferences.SystemSettingSwitchPreference
-            android:key="statusbar_notif_count"
-            android:title="@string/status_bar_notif_count_title"
-            android:summary="@string/status_bar_notif_count_summary"
-            android:defaultValue="false" />
+        android:key="statusbar_notif_count"
+        android:title="@string/status_bar_notif_count_title"
+        android:summary="@string/status_bar_notif_count_summary"
+        android:defaultValue="false" />
 
     <com.spark.support.preferences.SystemSettingSwitchPreference
-            android:key="use_old_mobiletype"
-            android:title="@string/use_old_mobiletype_title"
-            android:summary="@string/use_old_mobiletype_summary"
-            android:defaultValue="false" />
+        android:key="use_old_mobiletype"
+        android:title="@string/use_old_mobiletype_title"
+        android:summary="@string/use_old_mobiletype_summary"
+        android:defaultValue="false" />
 
-        <com.spark.support.preferences.SecureSettingSwitchPreference
-            android:key="show_wifi_standard_icon"
-            android:title="@string/show_wifi_standard_icon_title"
-            android:summary="@string/show_wifi_standard_icon_summary"
-            android:defaultValue="false" />
+    <com.spark.support.preferences.SecureSettingSwitchPreference
+        android:key="show_wifi_standard_icon"
+        android:title="@string/show_wifi_standard_icon_title"
+        android:summary="@string/show_wifi_standard_icon_summary"
+        android:defaultValue="false" />
 
-        <com.spark.support.preferences.SystemSettingSwitchPreference
-            android:key="data_disabled_icon"
-            android:title="@string/data_disabled_icon_title"
-            android:summary="@string/data_disabled_icon_summary"
-            android:defaultValue="true"/>
+    <com.spark.support.preferences.SystemSettingSwitchPreference
+        android:key="data_disabled_icon"
+        android:title="@string/data_disabled_icon_title"
+        android:summary="@string/data_disabled_icon_summary"
+        android:defaultValue="true"/>
 
-        <com.spark.support.preferences.SystemSettingSwitchPreference
-            android:key="show_fourg_icon"
-            android:title="@string/show_fourg_icon_title"
-            android:summary="@string/show_fourg_icon_summary"
-            android:defaultValue="false"/>
+    <com.spark.support.preferences.SystemSettingSwitchPreference
+        android:key="show_fourg_icon"
+        android:title="@string/show_fourg_icon_title"
+        android:summary="@string/show_fourg_icon_summary"
+        android:defaultValue="false"/>
 
-        <com.spark.support.preferences.SystemSettingSwitchPreference
-            android:key="roaming_indicator_icon"
-            android:title="@string/roaming_indicator_icon_title"
-            android:summary="@string/roaming_indicator_icon_summary"
-            android:defaultValue="true"/>
+    <com.spark.support.preferences.SystemSettingSwitchPreference
+        android:key="roaming_indicator_icon"
+        android:title="@string/roaming_indicator_icon_title"
+        android:summary="@string/roaming_indicator_icon_summary"
+        android:defaultValue="true"/>
 
-        <com.spark.support.preferences.SystemSettingSeekBarPreference
-            android:key="volte_icon_style"
-            android:title="@string/volte_icon_title"
-            android:summary="@string/volte_icon_summary"
-            android:defaultValue="0"
-            settings:defaultValueText="@string/disabled"
-            android:max="9"
-            settings:min="0"
-            settings:units="" />
+    <com.spark.support.preferences.SystemSettingSeekBarPreference
+        android:key="volte_icon_style"
+        android:title="@string/volte_icon_title"
+        android:summary="@string/volte_icon_summary"
+        android:defaultValue="0"
+        settings:defaultValueText="@string/disabled"
+        android:max="9"
+        settings:min="0"
+        settings:units="" />
 
-        <com.spark.support.preferences.SystemSettingSeekBarPreference
-            android:key="vowifi_icon_style"
-            android:title="@string/vowifi_icon_title"
-            android:summary="@string/vowifi_icon_summary"
-            android:defaultValue="0"
-            settings:defaultValueText="@string/disabled"
-            android:max="8"
-            settings:min="0"
-            settings:units="" />
+    <com.spark.support.preferences.SystemSettingSeekBarPreference
+        android:key="vowifi_icon_style"
+        android:title="@string/vowifi_icon_title"
+        android:summary="@string/vowifi_icon_summary"
+        android:defaultValue="0"
+        settings:defaultValueText="@string/disabled"
+        android:max="8"
+        settings:min="0"
+        settings:units="" />
 
-        <com.spark.support.preferences.SystemSettingSwitchPreference
-            android:key="volte_vowifi_override"
-            android:title="@string/volte_vowifi_override_title"
-            android:summary="@string/volte_vowifi_override_summary"
-            android:defaultValue="true"/>
-
-    </PreferenceCategory>
+    <com.spark.support.preferences.SystemSettingSwitchPreference
+        android:key="volte_vowifi_override"
+        android:title="@string/volte_vowifi_override_title"
+        android:summary="@string/volte_vowifi_override_summary"
+        android:defaultValue="true"/>
 
     <!-- Status bar battery customizations -->
     <PreferenceCategory
         android:title="@string/status_bar_battery_category_title" >
 
-         <com.spark.support.preferences.SystemSettingListPreference
+        <com.spark.support.preferences.SystemSettingListPreference
             android:key="status_bar_battery_style"
             android:title="@string/status_bar_battery_style_title"
             android:entries="@array/status_bar_battery_style_entries"
             android:entryValues="@array/status_bar_battery_style_values"
             android:defaultValue="0" />
 
-         <com.spark.support.preferences.SystemSettingListPreference
+        <com.spark.support.preferences.SystemSettingListPreference
             android:key="status_bar_show_battery_percent"
             android:title="@string/status_bar_battery_percent_title"
             android:entries="@array/status_bar_battery_percent_entries"
