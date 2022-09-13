@@ -9,6 +9,22 @@
     <string name="unit_ms">ms</string>
 
     <!-- Categories -->
+    <string name="statusbar_title">Status bar</string>
+    <string name="quicksettings_title">Quick Settings</string>
+    <string name="notifications_title">Notifications</string>
+    <string name="power_title">Power</string>
+
+
+    <string name="statusbar_summary">Clock &amp; date, <b>Traffic Indicator</b>, Battery Styles, Statusbar items</string>
+    <string name="quicksettings_summary"><b>Brightness slider</b>, Secure lockscreen, QS media player, Quick pulldown, Tile animations</string>
+    <string name="notififications_summary">Heads UP, <b>Ambient</b>, Notification Headers, Re-ticker, In-call vibration</string>
+    <string name="theme_summary">Monet, Black theme, RGB picker, Icon packs, Icon shapes, <b>Clock styles</b></string>
+    <string name="gestures_summary"><b>Brightness control</b>, Tap to wake/sleep, Toggle torch when screen off, Volume rocker</string>
+    <string name="power_summary">Disable on lockscreen, <b>Advanced reboot</b> display options can be found here</string>
+    <string name="lockscreen_summary">Lockscreen shortcuts, <b>FP icons and animations</b>, Screenoff FOD, Media art, AOD schedule</string>
+    <string name="misc_summary"><b>Game Space</b>, Ad-block, Volume steps, Animations, CPU info, Wallpaper Zoom</string>
+
+    <!-- Categories -->
     <string name="themes_title">Themes</string>
     <string name="qs_themes">Qs Settings</string>
     <string name="spoof_title">Spoofing</string>
@@ -17,7 +33,6 @@
     <string name="lockscreen_title">Lock screen</string>
     <string name="misc_title">Miscellaneous</string>
     <string name="powermenu_title">Power menu</string>
-    <string name="statusbar_title">Status bar</string>
     <string name="buttons_title">Buttons</string>
     <string name="statusbar_items_category">Status bar items</string>
     <string name="fingerprint_category">Fingerprint</string>
@@ -621,6 +636,7 @@
     <string name="settings_dashboard_style_oos12">OxygenOS 12</string>
     <string name="settings_dashboard_style_spark">Spark</string>
     <string name="settings_dashboard_style_spark_clean">Spark Clean</string>
+    <string name="settings_dashboard_style_dot">Dot</string>
     <string name="settings_layout_category_title">Settings UI interface</string>
     <string name="settings_base_style_title">Sub-menus header</string>
     <string name="settings_base_style_summary">Use an alternative layout for the header in the sub-menus of Settings</string>
