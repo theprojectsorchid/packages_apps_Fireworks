@@ -163,7 +163,8 @@
     <SwitchPreference
         android:key="navbar_visibility"
         android:title="@string/navigation_bar_title"
-        android:summary="@string/navigation_bar_summary" />
+        android:summary="@string/navigation_bar_summary"
+        android:defaultValue="true"/>
 
     <PreferenceCategory
         android:key="navigation_keys"
