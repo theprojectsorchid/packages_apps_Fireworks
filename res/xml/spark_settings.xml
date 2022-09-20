@@ -16,17 +16,18 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/app_name" >
 
-<!--com.android.settingslib.widget.TopIntroPreference
-            android:key="spark_illustration_desc"
-            android:order="-999"
-            android:title="@string/spark_illustration_summary" /-->
+    <Preference
+        android:key="spark_logo"
+        android:selectable="false"
+        android:persistent="true"
+        settings:layout="@layout/spark_logo"/>
 
     <!-- Themes -->
     <Preference
         android:key="key_theme_settings"
         settings:layout="@layout/dot_dashboard_preference_full_accent"
         android:title="@string/themes_title"
-        android:summary="@string/theme_summary"
+        android:summary="@string/themes_summary"
         android:fragment="com.spark.settings.fragments.ThemeSettings" />
 
     <!-- Statusbar -->
@@ -37,6 +38,15 @@
         android:summary="@string/statusbar_summary"
         android:fragment="com.spark.settings.fragments.StatusBarSettings" />
 
+
+    <!-- Quick settings -->
+    <Preference
+        android:key="key_quicksettings"
+        settings:layout="@layout/dot_dashboard_preference_full"
+        android:title="@string/quicksettings_title"
+        android:summary="@string/quicksettings_summary"
+        android:fragment="com.spark.settings.fragments.QuickSettings" />
+
     <!-- Lockscreen -->
     <Preference
         android:key="key_lockscreen_settings"
@@ -44,6 +54,14 @@
         android:title="@string/lockscreen_title"
         android:summary="@string/lockscreen_summary"
         android:fragment="com.spark.settings.fragments.LockScreenSettings" />
+
+    <!-- Notifications -->
+    <Preference
+        android:key="key_notifications_settings"
+        settings:layout="@layout/dot_dashboard_preference_full"
+        android:title="@string/notifications_title"
+        android:summary="@string/notifications_summary"
+        android:fragment="com.spark.settings.fragments.NotificationSettings" />
 
     <!-- Gestures -->
     <Preference
@@ -53,20 +71,12 @@
         android:summary="@string/gestures_summary"
         android:fragment="com.spark.settings.fragments.GestureSettings" />
 
-    <!-- Gestures -->
+    <!-- Misc -->
     <Preference
         android:key="key_misc_settings"
         settings:layout="@layout/dot_dashboard_preference_full"
         android:title="@string/misc_title"
         android:summary="@string/misc_summary"
         android:fragment="com.spark.settings.fragments.MiscSettings" />
-
-    <!-- Power -->
-    <Preference
-        android:key="key_power_settings"
-        settings:layout="@layout/dot_dashboard_preference_full"
-        android:title="@string/power_title"
-        android:summary="@string/power_summary"
-        android:fragment="com.spark.settings.fragments.PowerSettings" />
 
 </PreferenceScreen>

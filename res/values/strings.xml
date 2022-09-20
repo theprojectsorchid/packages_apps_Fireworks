@@ -15,14 +15,15 @@
     <string name="power_title">Power</string>
 
 
-    <string name="statusbar_summary">Clock &amp; date, <b>Traffic Indicator</b>, Battery Styles, Statusbar items</string>
-    <string name="quicksettings_summary"><b>Brightness slider</b>, Secure lockscreen, QS media player, Quick pulldown, Tile animations</string>
-    <string name="notififications_summary">Heads UP, <b>Ambient</b>, Notification Headers, Re-ticker, In-call vibration</string>
-    <string name="theme_summary">Monet, Black theme, RGB picker, Icon packs, Icon shapes, <b>Clock styles</b></string>
-    <string name="gestures_summary"><b>Brightness control</b>, Tap to wake/sleep, Toggle torch when screen off, Volume rocker</string>
-    <string name="power_summary">Disable on lockscreen, <b>Advanced reboot</b> display options can be found here</string>
-    <string name="lockscreen_summary">Lockscreen shortcuts, <b>FP icons and animations</b>, Screenoff FOD, Media art, AOD schedule</string>
-    <string name="misc_summary"><b>Game Space</b>, Ad-block, Volume steps, Animations, CPU info, Wallpaper Zoom</string>
+    <string name="statusbar_summary">Clock style, battery style, network traffic, status bar icons...</string>
+    <string name="quicksettings_summary">Brightness slider, qs battery style, tiles layout, qs style, animations...</string>
+    <string name="notifications_summary">Heads up, reTicker, ambient edge light, style...</string>
+    <string name="themes_summary">Monet, fonts, icons, navbar style, settings dashboard style...</string>
+    <string name="gestures_summary">System gestures, power menu, button settings...</string>
+    <string name="power_summary">Customize power menu</string>
+    <string name="lockscreen_summary">Clock style, weather, fingerprint, secure lockscreen, animations, media art...</string>
+    <string name="misc_summary"><b>Spoofing</b>, Ad-block, sensors block, smart pixels...</string>
+    <string name="spark_illustration_summary">Light up the sky</string>
 
     <!-- Categories -->
     <string name="themes_title">Themes</string>
@@ -48,6 +49,7 @@
     <string name="flashlight_category">Flashlight</string>
     <string name="qs_category">Qs Customizations</string>
     <string name="battery_category">Energy saving Configurations</string>
+    <string name="qs_animation_category">Animations</string>
 
     <!-- Color picker -->
     <string name="rgb">RGB</string>
@@ -280,13 +282,13 @@
     <string name="status_bar_battery_percent_title">Battery percent</string>
     <string name="status_bar_battery_percent_hidden">Hidden</string>
     <string name="status_bar_battery_percent_text_inside">Inside the icon</string>
-    <string name="status_bar_battery_percent_text_next_right">Next to the icon (right)</string> 
-    <string name="status_bar_battery_percent_text_next_left">Next to the icon (left)</string> 
+    <string name="status_bar_battery_percent_text_next_right">Next to the icon (right)</string>
+    <string name="status_bar_battery_percent_text_next_left">Next to the icon (left)</string>
     <string name="status_bar_battery_text_charging_title">Battery percentage when charging</string>
     <string name="status_bar_battery_text_charging_summary">Always display battery percentage when charging</string>
 
     <!-- QS battery -->
-    <string name="qs_battery_category_title">Qs Battery customizations</string>
+    <string name="qs_battery_category_title">Battery style</string>
     <string name="qs_use_status_bar_battery_style">Follow status bar style</string>
 
     <!-- Battery estimate -->
@@ -321,7 +323,7 @@
     <string name="charging_animation_summary">Display an animation when the device is plugged in</string>
 
     <!-- QS footer text -->
-    <string name="qs_footer_category">Qs Footer Customization</string>
+    <string name="qs_footer_category">Footer text</string>
     <string name="qs_footer_text_show_title">Show QS footer text</string>
     <string name="qs_footer_text_string_title">Customize footer text</string>
     <string name="qs_footer_text_string_summary">Set to empty for default Spark</string>
@@ -469,7 +471,7 @@
     <string name="disable_qs_summary">Hides QS if device is locked. Does not disable notification shade</string>
 
     <!-- QS footer warnings -->
-    <string name="qs_footer_warnings_title">QS footer warnings</string>
+    <string name="qs_footer_warnings_title">Footer warnings</string>
     <string name="qs_footer_warnings_summary">Display a warning at bottom of QS panel when network is monitored by external apps or vpn</string>
 
     <!-- Lockscreen battery info -->
@@ -812,4 +814,7 @@
     <string name="qs_outline">QS Outline Style</string>
     <string name="qs_two_tone">QS Two-Tone Accent</string>
     <string name="qs_color_pop">QS Color Pop</string>
+
+    <!-- Fireworks logo summary -->
+    <string name="fireworks_summary">Everything began from a spark</string>
 </resources>
