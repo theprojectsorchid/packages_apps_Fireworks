@@ -64,26 +64,16 @@ public class ThemeSettings extends DashboardFragment implements
     public static final String TAG = "ThemeSettings";
     private Context mContext;
 
-    private static final String QS_FOOTER_TEXT_STRING = "qs_footer_text_string";
     private static final String ALT_SETTINGS_LAYOUT = "alt_settings_layout";
     private static final String SETTINGS_DASHBOARD_STYLE = "settings_dashboard_style";
     private static final String USE_STOCK_LAYOUT = "use_stock_layout";
     private static final String DISABLE_USERCARD = "disable_usercard";
-    private static final String PREF_TILE_ANIM_STYLE = "qs_tile_animation_style";
-    private static final String PREF_TILE_ANIM_DURATION = "qs_tile_animation_duration";
-    private static final String PREF_TILE_ANIM_INTERPOLATOR = "qs_tile_animation_interpolator";
-    private static final String QS_PANEL_STYLE  = "qs_panel_style";
 
     private Handler mHandler;
     private IOverlayManager mOverlayManager;
     private IOverlayManager mOverlayService;
-    private SystemSettingListPreference mQsStyle;
-    private SystemSettingEditTextPreference mFooterString;
-    private SystemSettingListPreference mSettingsDashBoardStyle;
-    private ListPreference mTileAnimationStyle;
-    private ListPreference mTileAnimationDuration;
     private SystemSettingSwitchPreference mAltSettingsLayout;
-    private ListPreference mTileAnimationInterpolator;
+    private SystemSettingListPreference mSettingsDashBoardStyle;
     private SystemSettingSwitchPreference mUseStockLayout;
     private SystemSettingSwitchPreference mDisableUserCard;
 
@@ -96,17 +86,6 @@ public class ThemeSettings extends DashboardFragment implements
 
         PreferenceScreen prefSet = getPreferenceScreen();
 
-        mFooterString = (SystemSettingEditTextPreference) findPreference(QS_FOOTER_TEXT_STRING);
-        mFooterString.setOnPreferenceChangeListener(this);
-        String footerString = Settings.System.getString(getContentResolver(),
-                QS_FOOTER_TEXT_STRING);
-        if (footerString != null && !footerString.isEmpty())
-            mFooterString.setText(footerString);
-        else {
-            mFooterString.setText("Spark");
-            Settings.System.putString(getActivity().getContentResolver(),
-                    Settings.System.QS_FOOTER_TEXT_STRING, "Spark");
-        }
         mSettingsDashBoardStyle = (SystemSettingListPreference) findPreference(SETTINGS_DASHBOARD_STYLE);
         mSettingsDashBoardStyle.setOnPreferenceChangeListener(this);
         mAltSettingsLayout = (SystemSettingSwitchPreference) findPreference(ALT_SETTINGS_LAYOUT);
@@ -115,57 +94,6 @@ public class ThemeSettings extends DashboardFragment implements
         mUseStockLayout.setOnPreferenceChangeListener(this);
         mDisableUserCard = (SystemSettingSwitchPreference) findPreference(DISABLE_USERCARD);
         mDisableUserCard.setOnPreferenceChangeListener(this);
-
-        mTileAnimationStyle = (ListPreference) findPreference(PREF_TILE_ANIM_STYLE);
-        int tileAnimationStyle = Settings.System.getIntForUser(resolver,
-                Settings.System.ANIM_TILE_STYLE, 0, UserHandle.USER_CURRENT);
-        mTileAnimationStyle.setValue(String.valueOf(tileAnimationStyle));
-        updateTileAnimationStyleSummary(tileAnimationStyle);
-        updateAnimTileStyle(tileAnimationStyle);
-        mTileAnimationStyle.setOnPreferenceChangeListener(this);
-
-        mTileAnimationDuration = (ListPreference) findPreference(PREF_TILE_ANIM_DURATION);
-        int tileAnimationDuration = Settings.System.getIntForUser(resolver,
-                Settings.System.ANIM_TILE_DURATION, 2000, UserHandle.USER_CURRENT);
-        mTileAnimationDuration.setValue(String.valueOf(tileAnimationDuration));
-        updateTileAnimationDurationSummary(tileAnimationDuration);
-        mTileAnimationDuration.setOnPreferenceChangeListener(this);
-
-        mTileAnimationInterpolator = (ListPreference) findPreference(PREF_TILE_ANIM_INTERPOLATOR);
-        int tileAnimationInterpolator = Settings.System.getIntForUser(getContentResolver(),
-                Settings.System.ANIM_TILE_INTERPOLATOR, 0, UserHandle.USER_CURRENT);
-        mTileAnimationInterpolator.setValue(String.valueOf(tileAnimationInterpolator));
-        updateTileAnimationInterpolatorSummary(tileAnimationInterpolator);
-        mTileAnimationInterpolator.setOnPreferenceChangeListener(this);
-
-        mOverlayService = IOverlayManager.Stub
-        .asInterface(ServiceManager.getService(Context.OVERLAY_SERVICE));
-
-        mQsStyle = (SystemSettingListPreference) findPreference(QS_PANEL_STYLE);
-        mCustomSettingsObserver.observe();
-    }
-
-    private CustomSettingsObserver mCustomSettingsObserver = new CustomSettingsObserver(mHandler);
-    private class CustomSettingsObserver extends ContentObserver {
-
-        CustomSettingsObserver(Handler handler) {
-            super(handler);
-        }
-
-        void observe() {
-            Context mContext = getContext();
-            ContentResolver resolver = mContext.getContentResolver();
-            resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.QS_PANEL_STYLE),
-                    false, this, UserHandle.USER_ALL);
-        }
-
-        @Override
-        public void onChange(boolean selfChange, Uri uri) {
-            if (uri.equals(Settings.System.getUriFor(Settings.System.QS_PANEL_STYLE))) {
-                updateQsStyle();
-            }
-        }
     }
 
     @Override
@@ -176,18 +104,7 @@ public class ThemeSettings extends DashboardFragment implements
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         ContentResolver resolver = getActivity().getContentResolver();
-        if (preference == mFooterString) {
-            String value = (String) newValue;
-            if (value != "" && !value.isEmpty())
-                Settings.System.putString(getActivity().getContentResolver(),
-                        Settings.System.QS_FOOTER_TEXT_STRING, value);
-            else {
-                mFooterString.setText("Spark");
-                Settings.System.putString(getActivity().getContentResolver(),
-                        Settings.System.QS_FOOTER_TEXT_STRING, "Spark");
-            }
-            return true;
-        } else if (preference == mSettingsDashBoardStyle) {
+        if (preference == mSettingsDashBoardStyle) {
             SparkUtils.showSettingsRestartDialog(getContext());
             return true;
         } else if (preference == mAltSettingsLayout) {
@@ -199,113 +116,10 @@ public class ThemeSettings extends DashboardFragment implements
         } else if (preference == mDisableUserCard) {
             SparkUtils.showSettingsRestartDialog(getContext());
             return true;
-        } else if (preference == mTileAnimationStyle) {
-            int tileAnimationStyle = Integer.valueOf((String) newValue);
-            Settings.System.putIntForUser(resolver, Settings.System.ANIM_TILE_STYLE,
-                    tileAnimationStyle, UserHandle.USER_CURRENT);
-            updateTileAnimationStyleSummary(tileAnimationStyle);
-            updateAnimTileStyle(tileAnimationStyle);
-            return true;
-        } else if (preference == mTileAnimationDuration) {
-            int tileAnimationDuration = Integer.valueOf((String) newValue);
-            Settings.System.putIntForUser(resolver, Settings.System.ANIM_TILE_DURATION,
-                    tileAnimationDuration, UserHandle.USER_CURRENT);
-            updateTileAnimationDurationSummary(tileAnimationDuration);
-            return true;
-        } else if (preference == mTileAnimationInterpolator) {
-            int tileAnimationInterpolator = Integer.valueOf((String) newValue);
-            Settings.System.putIntForUser(resolver, Settings.System.ANIM_TILE_INTERPOLATOR,
-                    tileAnimationInterpolator, UserHandle.USER_CURRENT);
-            updateTileAnimationInterpolatorSummary(tileAnimationInterpolator);
-            return true;
-        } else if (preference == mQsStyle) {
-            mCustomSettingsObserver.observe();
-            return true;
         }
         return false;
     }
 
-
-    private void updateQsStyle() {
-        ContentResolver resolver = getActivity().getContentResolver();
-
-        int qsPanelStyle = Settings.System.getIntForUser(getContext().getContentResolver(),
-                Settings.System.QS_PANEL_STYLE , 0, UserHandle.USER_CURRENT);
-
-        if (qsPanelStyle == 0) {
-            setDefaultStyle(mOverlayService);
-        } else if (qsPanelStyle == 1) {
-            setQsStyle(mOverlayService, "com.android.system.qs.roundedrectangle");
-        } else if (qsPanelStyle == 2) {
-            setQsStyle(mOverlayService, "com.android.system.qs.outline");
-        } else if (qsPanelStyle == 3 || qsPanelStyle == 4) {
-            setQsStyle(mOverlayService, "com.android.system.qs.twotoneaccent");
-        }
-    }
-
-    public static void setDefaultStyle(IOverlayManager overlayManager) {
-        for (int i = 0; i < QS_STYLES.length; i++) {
-            String qsStyles = QS_STYLES[i];
-            try {
-                overlayManager.setEnabled(qsStyles, false, USER_SYSTEM);
-            } catch (RemoteException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    public static void setQsStyle(IOverlayManager overlayManager, String overlayName) {
-        try {
-            for (int i = 0; i < QS_STYLES.length; i++) {
-                String qsStyles = QS_STYLES[i];
-                try {
-                    overlayManager.setEnabled(qsStyles, false, USER_SYSTEM);
-                } catch (RemoteException e) {
-                    e.printStackTrace();
-                }
-            }
-            overlayManager.setEnabled(overlayName, true, USER_SYSTEM);
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static final String[] QS_STYLES = {
-        "com.android.system.qs.roundedrectangle",
-        "com.android.system.qs.outline",
-        "com.android.system.qs.twotoneaccent"
-    };
-
-
-	private void updateTileAnimationStyleSummary(int tileAnimationStyle) {
-        String prefix = (String) mTileAnimationStyle.getEntries()[mTileAnimationStyle.findIndexOfValue(String
-                .valueOf(tileAnimationStyle))];
-        mTileAnimationStyle.setSummary(getResources().getString(R.string.qs_set_animation_style, prefix));
-    }
-
-     private void updateTileAnimationDurationSummary(int tileAnimationDuration) {
-        String prefix = (String) mTileAnimationDuration.getEntries()[mTileAnimationDuration.findIndexOfValue(String
-                .valueOf(tileAnimationDuration))];
-        mTileAnimationDuration.setSummary(getResources().getString(R.string.qs_set_animation_duration, prefix));
-    }
-
-    private void updateTileAnimationInterpolatorSummary(int tileAnimationInterpolator) {
-        String prefix = (String) mTileAnimationInterpolator.getEntries()[mTileAnimationInterpolator.findIndexOfValue(String
-                .valueOf(tileAnimationInterpolator))];
-        mTileAnimationInterpolator.setSummary(getResources().getString(R.string.qs_set_animation_interpolator, prefix));
-    }
-
-    private void updateAnimTileStyle(int tileAnimationStyle) {
-        if (mTileAnimationDuration != null) {
-            if (tileAnimationStyle == 0) {
-                mTileAnimationDuration.setSelectable(false);
-                mTileAnimationInterpolator.setSelectable(false);
-            } else {
-                mTileAnimationDuration.setSelectable(true);
-                mTileAnimationInterpolator.setSelectable(true);
-            }
-        }
-        }
 
     @Override
     protected List<AbstractPreferenceController> createPreferenceControllers(Context context) {
@@ -320,8 +134,9 @@ public class ThemeSettings extends DashboardFragment implements
 
     @Override
     protected String getLogTag() {
-        return TAG;
+         return TAG;
     }
+
     @Override
     public int getMetricsCategory() {
         return MetricsProto.MetricsEvent.SPARK_SETTINGS;

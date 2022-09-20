@@ -57,13 +57,6 @@
     <PreferenceCategory
          android:title="@string/qs_themes">
 
-        <ListPreference
-            android:key="status_bar_quick_qs_pulldown"
-            android:title="@string/status_bar_quick_qs_pulldown"
-            android:entries="@array/quick_pulldown_entries"
-            android:entryValues="@array/quick_pulldown_values"
-            android:defaultValue="0" />
-
        <com.spark.support.preferences.SecureSettingSwitchPreference
             android:key="disable_secure_tiles_on_lockscreen"
             android:title="@string/qstile_requires_unlocking_title"
@@ -77,20 +70,6 @@
             android:defaultValue="false" />
 
     </PreferenceCategory>
-
-    <!-- Udfps options -->
-    <PreferenceCategory
-        android:key="udfps_category"
-        android:title="@string/udfps_category">
-
-        <Preference
-            android:key="udfps_settings"
-            android:title="@string/udfps_settings_title"
-            android:summary="@string/udfps_settings_summary"
-            android:fragment="com.spark.settings.fragments.Udfps" />
-
-    </PreferenceCategory>
-
 
     <PreferenceCategory
         android:key="lockscreen_ui_finterprint_category"
@@ -114,6 +93,11 @@
             android:summary="@string/fprint_error_vib_summary"
             android:persistent="true" />
 
+        <com.spark.support.preferences.SecureSettingSwitchPreference
+            android:key="screen_off_udfps_enabled"
+            android:title="@string/screen_off_udfps_title"
+            android:summary="@string/screen_off_udfps_summary"
+            android:defaultValue="false" />
     </PreferenceCategory>
 
     <PreferenceCategory

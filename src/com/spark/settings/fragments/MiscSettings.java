@@ -75,17 +75,8 @@ import java.util.Collections;
 public class MiscSettings extends ActionFragment implements
         OnPreferenceChangeListener {
     private static final String PREF_ADBLOCK = "persist.spark.hosts_block";
-    private static final String CHARGING_LIGHTS_PREF = "charging_light";
-    private static final String LED_CATEGORY = "led";
-    private static final String NOTIFICATION_LIGHTS_PREF = "notification_light";
-    private static final String ALERT_SLIDER_PREF = "alert_slider_notifications";
     private static final String HWKEY_DISABLE = "hardware_keys_disable";
     private static final String NAVBAR_VISIBILITY = "navbar_visibility";
-    private static final String PREF_FLASH_ON_CALL = "flashlight_on_call";
-    private static final String PREF_FLASH_ON_CALL_DND = "flashlight_on_call_ignore_dnd";
-    private static final String PREF_FLASH_ON_CALL_RATE = "flashlight_on_call_rate";
-    private static final String FLASHLIGHT_CATEGORY = "flashlight_category";
-    private static final String KEY_EDGE_LIGHTING = "pulse_ambient_light";
     private static final String SMART_PIXELS = "smart_pixels";
 
     // category keys
@@ -121,15 +112,6 @@ public class MiscSettings extends ActionFragment implements
 
     private boolean mIsNavSwitchingMode = false;
 
-    private Preference mChargingLeds;
-    private Preference mNotLights;
-    private Preference mAlertSlider;
-    private PreferenceCategory mLedCategory;
-    private CustomSeekBarPreference mFlashOnCallRate;
-    private SystemSettingSwitchPreference mFlashOnCallIgnoreDND;
-    private SystemSettingListPreference mFlashOnCall;
-    private SystemSettingMasterSwitchPreference mEdgeLighting;
-
     private Handler mHandler = new Handler();
 
     @Override
@@ -143,63 +125,11 @@ public class MiscSettings extends ActionFragment implements
         final PreferenceScreen prefSet = getPreferenceScreen();
         final Resources res = mContext.getResources();
 
-        mAlertSlider = (Preference) prefSet.findPreference(ALERT_SLIDER_PREF);
-        boolean mAlertSliderAvailable = res.getBoolean(
-                com.android.internal.R.bool.config_hasAlertSlider);
-        if (!mAlertSliderAvailable)
-            prefSet.removePreference(mAlertSlider);
-
-        findPreference(PREF_ADBLOCK).setOnPreferenceChangeListener(this);
-
-        boolean hasLED = res.getBoolean(
-                com.android.internal.R.bool.config_hasNotificationLed);
-        if (hasLED) {
-            mNotLights = (Preference) findPreference(NOTIFICATION_LIGHTS_PREF);
-            boolean mNotLightsSupported = res.getBoolean(
-                    com.android.internal.R.bool.config_intrusiveNotificationLed);
-            if (!mNotLightsSupported) {
-                prefSet.removePreference(mNotLights);
-            }
-            mChargingLeds = (Preference) findPreference(CHARGING_LIGHTS_PREF);
-            if (mChargingLeds != null
-                    && !getResources().getBoolean(
-                            com.android.internal.R.bool.config_intrusiveBatteryLed)) {
-                prefSet.removePreference(mChargingLeds);
-            }
-        } else {
-            mLedCategory = findPreference(LED_CATEGORY);
-            mLedCategory.setVisible(false);
-        }
-
-        if (!SparkUtils.deviceHasFlashlight(mContext)) {
-            final PreferenceCategory flashlightCategory =
-                    (PreferenceCategory) findPreference(FLASHLIGHT_CATEGORY);
-            prefSet.removePreference(flashlightCategory);
-        } else {
-            mFlashOnCallRate = (CustomSeekBarPreference)
-                    findPreference(PREF_FLASH_ON_CALL_RATE);
-            int value = Settings.System.getInt(resolver,
-                    Settings.System.FLASHLIGHT_ON_CALL_RATE, 1);
-            mFlashOnCallRate.setValue(value);
-            mFlashOnCallRate.setOnPreferenceChangeListener(this);
-
-            mFlashOnCallIgnoreDND = (SystemSettingSwitchPreference)
-                    findPreference(PREF_FLASH_ON_CALL_DND);
-            value = Settings.System.getInt(resolver,
-                    Settings.System.FLASHLIGHT_ON_CALL, 0);
-            mFlashOnCallIgnoreDND.setVisible(value > 1);
-            mFlashOnCallRate.setVisible(value != 0);
-
-            mFlashOnCall = (SystemSettingListPreference)
-                    findPreference(PREF_FLASH_ON_CALL);
-            mFlashOnCall.setSummary(mFlashOnCall.getEntries()[value]);
-            mFlashOnCall.setOnPreferenceChangeListener(this);
-
-           mSmartPixels = (Preference) findPreference(SMART_PIXELS);
-           boolean mSmartPixelsSupported = getResources().getBoolean(
-                 com.android.internal.R.bool.config_supportSmartPixels);
-           if (!mSmartPixelsSupported)
-                 prefSet.removePreference(mSmartPixels);
+        mSmartPixels = (Preference) findPreference(SMART_PIXELS);
+        boolean mSmartPixelsSupported = getResources().getBoolean(
+              com.android.internal.R.bool.config_supportSmartPixels);
+        if (!mSmartPixelsSupported) {
+              prefSet.removePreference(mSmartPixels);
         }
 
         final boolean needsNavbar = ActionUtils.hasNavbarByDefault(getActivity());
@@ -295,13 +225,6 @@ public class MiscSettings extends ActionFragment implements
                 SparkUtils.hasNavbarByDefault(getActivity()) ? 1 : 0, UserHandle.USER_CURRENT) != 0;
         mNavbarVisibility.setChecked(showing);
         mNavbarVisibility.setOnPreferenceChangeListener(this);
-
-        mEdgeLighting = (SystemSettingMasterSwitchPreference)
-                findPreference(KEY_EDGE_LIGHTING);
-        boolean enabled = Settings.System.getIntForUser(resolver,
-                KEY_EDGE_LIGHTING, 0, UserHandle.USER_CURRENT) == 1;
-        mEdgeLighting.setChecked(enabled);
-        mEdgeLighting.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -349,27 +272,8 @@ public class MiscSettings extends ActionFragment implements
                 }
             }, 1500);
             return true;
-        } else if (preference == mFlashOnCall) {
-            int value = Integer.parseInt((String) newValue);
-            Settings.System.putInt(resolver,
-                    Settings.System.FLASHLIGHT_ON_CALL, value);
-            mFlashOnCall.setSummary(mFlashOnCall.getEntries()[value]);
-            mFlashOnCallIgnoreDND.setVisible(value > 1);
-            mFlashOnCallRate.setVisible(value != 0);
-            return true;
-        } else if (preference == mFlashOnCallRate) {
-            int value = (Integer) newValue;
-            Settings.System.putInt(resolver,
-                    Settings.System.FLASHLIGHT_ON_CALL_RATE, value);
-            return true;
-        } else if (preference == mEdgeLighting) {
-            boolean value = (Boolean) newValue;
-            Settings.System.putIntForUser(resolver, KEY_EDGE_LIGHTING,
-                    value ? 1 : 0, UserHandle.USER_CURRENT);
-            return true;
-        } else {
-            return false;
         }
+        return false;
     }
 
 
