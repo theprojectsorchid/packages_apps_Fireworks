@@ -637,6 +637,7 @@
     <string name="settings_dashboard_style_spark">Spark</string>
     <string name="settings_dashboard_style_spark_clean">Spark Clean</string>
     <string name="settings_dashboard_style_dot">Dot</string>
+    <string name="settings_dashboard_style_nad">Nad</string>
     <string name="settings_layout_category_title">Settings UI interface</string>
     <string name="settings_base_style_title">Sub-menus header</string>
     <string name="settings_base_style_summary">Use an alternative layout for the header in the sub-menus of Settings</string>
