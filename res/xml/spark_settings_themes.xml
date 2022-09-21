@@ -93,6 +93,12 @@
             android:title="@string/disable_usercard_title"
             android:summary="@string/disable_usercard_summary"
             android:defaultValue="true" />
+
+        <com.spark.support.preferences.SystemSettingSwitchPreference
+            android:key="panda_mode"
+            android:title="@string/black_qs_title"
+            android:summary="@string/black_qs_summary"
+            android:defaultValue="false" />
             
     </PreferenceCategory>
 

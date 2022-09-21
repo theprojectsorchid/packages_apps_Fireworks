@@ -800,4 +800,9 @@
 
     <!-- Fireworks logo summary -->
     <string name="fireworks_summary">Everything began from a spark</string>
+
+    <!-- Panda mode (black qs) -->
+    <string name="black_qs_title">Panda Mode</string>
+    <string name="black_qs_summary">Black QS background on light theme"</string>
+
 </resources>
