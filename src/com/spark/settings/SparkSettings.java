@@ -16,6 +16,7 @@
 package com.spark.settings;
 
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.UserHandle;
@@ -39,11 +40,44 @@ public class SparkSettings extends SettingsPreferenceFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.spark_settings);
+
+        int mDashBoardStyle = getDashboardStyle();
+        setPrefStyle(mDashBoardStyle);
     }
 
     @Override
     public int getMetricsCategory() {
         return MetricsProto.MetricsEvent.SPARK_SETTINGS;
+    }
+
+    private void setPrefStyle(int mDashBoardStyle) {
+        final PreferenceScreen screen = getPreferenceScreen();
+        final int count = screen.getPreferenceCount();
+        for (int i = 0; i < count; i++) {
+            final Preference preference = screen.getPreference(i);
+
+            String key = preference.getKey();
+
+            if (key == null) continue;
+
+            if (key.equals("spark_logo")) {
+                preference.setLayoutResource(R.layout.spark_logo);
+                continue;
+            }
+
+            if (mDashBoardStyle == 5 && key.equals("key_theme_settings")) {
+                preference.setLayoutResource(R.layout.dot_dashboard_preference_full_accent);
+            } else if (mDashBoardStyle == 6 && key.equals("key_theme_settings")) {
+                preference.setLayoutResource(R.layout.dot_dashboard_preference_full_accent_2);
+            } else {
+                preference.setLayoutResource(R.layout.dot_dashboard_preference_full);
+            }
+        }
+    }
+
+    private int getDashboardStyle() {
+        return Settings.System.getIntForUser(getContext().getContentResolver(),
+                Settings.System.SETTINGS_DASHBOARD_STYLE, 6, UserHandle.USER_CURRENT);
     }
 
     /**

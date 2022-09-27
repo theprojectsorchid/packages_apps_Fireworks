@@ -797,7 +797,4 @@
     <string name="qs_outline">QS Outline Style</string>
     <string name="qs_two_tone">QS Two-Tone Accent</string>
     <string name="qs_color_pop">QS Color Pop</string>
-
-    <!-- Fireworks logo summary -->
-    <string name="fireworks_summary">Everything began from a spark</string>
 </resources>
