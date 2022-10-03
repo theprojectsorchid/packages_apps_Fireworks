@@ -117,17 +117,13 @@
 
     <string name="aosp_gesture_summary">Stock gestures included with Android</string>
 
-    <!-- Double Tap Lock screen to Sleep -->
-    <string name="double_tap_to_sleep_lockscreen_title">Tap on lock screen</string>
-    <string name="double_tap_to_sleep_lockscreen_summary">Double-tap on the top third or bottom shortcut area of the lock screen to put the device to sleep</string>
-
-    <!-- Double tap status bar to sleep -->
-    <string name="double_tap_to_sleep_title">Tap on status bar</string>
-    <string name="double_tap_to_sleep_summary">Double-tap status bar to put the device to sleep</string>
+    <!-- dt2s -->
+    <string name="double_tap_to_sleep_title">Tap to sleep</string>
+    <string name="double_tap_to_sleep_summary">Double-tap on status bar or lockscreen to put the device to sleep</string>
 
     <!-- Double Tap on Doze to wake -->
-    <string name="double_tap_on_doze_to_wake_title">Tap to wake on doze</string>
-    <string name="double_tap_on_doze_to_wake_summary">Double-tap to wake when device is dreaming</string>
+    <string name="double_tap_on_doze_to_wake_title">Tap to wake</string>
+    <string name="double_tap_on_doze_to_wake_summary">Double-tap to wake when device is dreaming or screen is off</string>
 
     <!-- Volume buttons category -->
     <string name="volume_category">Volume rocker</string>
@@ -797,4 +793,8 @@
     <string name="qs_outline">QS Outline Style</string>
     <string name="qs_two_tone">QS Two-Tone Accent</string>
     <string name="qs_color_pop">QS Color Pop</string>
+
+    <!-- Max visible notification icons -->
+    <string name="max_visible_notification_icons_title">Notification icons</string>
+    <string name="max_visible_notification_icons_summary">Max. notification icons visible on statusbar</string>
 </resources>
