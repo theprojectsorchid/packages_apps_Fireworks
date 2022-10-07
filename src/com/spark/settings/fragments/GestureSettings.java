@@ -48,8 +48,10 @@ public class GestureSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
 
     private static final String TORCH_POWER_BUTTON_GESTURE = "torch_power_button_gesture";
+    private static final String DOUBLE_TAP_SLEEP_GESTURE = "double_tap_sleep_gesture";
 
     private ListPreference mTorchPowerButton;
+    private SystemSettingSwitchPreference mDoubleTapPreference;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -66,6 +68,15 @@ public class GestureSettings extends SettingsPreferenceFragment implements
         mTorchPowerButton.setSummary(mTorchPowerButton.getEntry());
         mTorchPowerButton.setOnPreferenceChangeListener(this);
 
+        // unify double tap to sleep gesture
+        mDoubleTapPreference = (SystemSettingSwitchPreference) findPreference(DOUBLE_TAP_SLEEP_GESTURE);
+        boolean mDoubleTapPreferenceValue = Settings.System.getInt(resolver,
+                Settings.System.DOUBLE_TAP_SLEEP_GESTURE, 0) == 1;
+        mDoubleTapPreference.setChecked(mDoubleTapPreferenceValue);
+        mDoubleTapPreference.setOnPreferenceChangeListener(this);
+        Settings.System.putInt(resolver, Settings.System.DOUBLE_TAP_SLEEP_LOCKSCREEN,
+                    mDoubleTapPreferenceValue ? 1 : 0);
+
     }
 
     @Override
@@ -78,6 +89,13 @@ public class GestureSettings extends SettingsPreferenceFragment implements
                     mTorchPowerButton.getEntries()[index]);
             Settings.System.putInt(resolver, Settings.System.TORCH_POWER_BUTTON_GESTURE,
                     mTorchPowerButtonValue);
+            return true;
+        } else if (preference == mDoubleTapPreference) {
+            int value = (boolean) newValue ? 1 : 0;
+            Settings.System.putInt(resolver, Settings.System.DOUBLE_TAP_SLEEP_GESTURE,
+                    value);
+            Settings.System.putInt(resolver, Settings.System.DOUBLE_TAP_SLEEP_LOCKSCREEN,
+                    value);
             return true;
         }
         return false;

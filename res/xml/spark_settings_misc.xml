@@ -87,16 +87,17 @@
 
    </PreferenceCategory>
 
-    <SwitchPreference
-        android:key="navbar_visibility"
-        android:title="@string/navigation_bar_title"
-        android:summary="@string/navigation_bar_summary"
-        android:defaultValue="true"/>
-
     <PreferenceCategory
         android:key="navigation_keys"
         android:title="@string/navigation_title"
         android:dependency="navbar_visibility">
+
+        <SwitchPreference
+            android:key="navbar_visibility"
+            android:title="@string/navigation_bar_title"
+            android:summary="@string/navigation_bar_summary"
+            android:defaultValue="true"
+            android:visibility="invisible" />
 
         <com.spark.support.preferences.SystemSettingSwitchPreference
             android:key="navigation_bar_menu_arrow_keys"

@@ -93,7 +93,7 @@
             android:title="@string/disable_usercard_title"
             android:summary="@string/disable_usercard_summary"
             android:defaultValue="true" />
-            
+
     </PreferenceCategory>
 
 </PreferenceScreen>
