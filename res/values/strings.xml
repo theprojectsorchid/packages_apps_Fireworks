@@ -850,6 +850,8 @@
     <string name="custom_theme_default">Default</string>
     <string name="custom_theme_black">Black</string>
     <string name="custom_theme_clear">Clear (BETA)</string>
-    <string name="custom_theme_vivid">Vivid(Monet)</string>
+    <string name="custom_theme_vivid">Vivid Colors</string>
+    <string name="custom_theme_snowpaint">Snowpaint</string>
+    <string name="custom_theme_espresso">Espresso</string>
 
 </resources>
