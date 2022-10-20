@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="statusbar_summary">Estilo relógio, estilo bateria, tráfego de rede, ícones da barra de estado...</string>
+    <string name="quicksettings_summary">Ajustes de brilho, bateria, layout, estilo, animações...</string>
+    <string name="notifications_summary">Heads up, reTicker, luz ambiente, estilo...</string>
+    <string name="themes_summary">Monet, fontes, ícones, estilo barra de navegação, estilo painel de instrumentos de configuração...</string>
+    <string name="gestures_summary">Gestos de sistema, menu de energia, definições de botões...</string>
+    <string name="power_summary">Personalização do menu de alimentação</string>
+    <string name="lockscreen_summary">Ajustes de relógio, tempo, impressão digital, bloqueio seguro de ecrã, animações, media art...</string>
+    <string name="misc_summary">Spoofing, Ad-block, bloco de sensores, pixels inteligentes...</string>
+    <string name="spark_illustration_summary">Acende as luzes do céu</string>
+    <string name="statusbar_items_summary">Escolher itens a mostrar na barra de estado</string>
+    <string name="quicksettings_title">Definições rápidas</string>
+    <string name="max_visible_notification_icons_title">Ícones de notificação</string>
+    <string name="max_visible_notification_icons_summary">Número máximo de ícones de notificação visíveis na barra de estado</string>
+    <string name="statusbar_padding">Espaçamento da barra de estado</string>
+    <string name="statusbar_top_padding">Topo</string>
+    <string name="statusbar_left_padding">Lado esquerdo</string>
+    <string name="statusbar_right_padding">Lado direito</string>
+</resources>

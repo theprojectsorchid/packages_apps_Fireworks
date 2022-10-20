@@ -17,6 +17,7 @@
     <string name="lockscreen_title">Экран блокировки</string>
     <string name="misc_title">Прочее</string>
     <string name="powermenu_title">Меню питания</string>
+    <string name="power_title">Выключение</string>
     <string name="statusbar_title">Строка состояния</string>
     <string name="buttons_title">Кнопки</string>
     <string name="statusbar_items_category">Значки строки состояния</string>
@@ -735,5 +736,5 @@
     <string name="custom_theme_default">По умолчанию</string>
     <string name="custom_theme_black">Чёрный</string>
     <string name="custom_theme_clear">Очистить (Бета)</string>
-    <string name="custom_theme_vivid">Vivid(Monet)</string>
+    <string name="custom_theme_vivid">Заполнение строки состояния</string>
 </resources>

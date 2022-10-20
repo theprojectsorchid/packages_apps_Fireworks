@@ -17,6 +17,7 @@
     <string name="lockscreen_title">Tela de bloqueio</string>
     <string name="misc_title">Diversos</string>
     <string name="powermenu_title">Menu de energia</string>
+    <string name="power_title">Energia</string>
     <string name="statusbar_title">Barra de status</string>
     <string name="buttons_title">Botões</string>
     <string name="statusbar_items_category">Itens da barra de status</string>

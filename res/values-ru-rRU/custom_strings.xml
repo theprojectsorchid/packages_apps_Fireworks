@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="statusbar_summary">Стиль часов, стиль батареи, трафик, иконки статус бара...</string>
+    <string name="quicksettings_summary">Ползунок яркости, иконки батареи, расположение плиток, стиль быстрых настроек, анимация...</string>
+    <string name="notifications_summary">Всплывающие окна, быстрый ответ, светящиеся боковые грани, стиль...</string>
+    <string name="themes_summary">Цвета, иконки, настройки кнопок, стили отображения настроек...</string>
+    <string name="gestures_summary">Жесты, меню питания, настройки кнопок...</string>
+    <string name="power_summary">Настройки меню выключения</string>
+    <string name="lockscreen_summary">Стиль часов, погода, отпечаток пальца, защита экрана блокировки, анимация, обложка...</string>
+    <string name="misc_summary">Блокировка рекламы, блокировки сенсора, умные пиксели...</string>
+    <string name="spark_illustration_summary">Подсветка</string>
+    <string name="statusbar_items_summary">Выберите элемент, для отображения в строке состояния</string>
+    <string name="quicksettings_title">Быстрые настройк</string>
+    <string name="max_visible_notification_icons_title">Иконки уведомлений</string>
+    <string name="max_visible_notification_icons_summary">Максимальное количество иконок в строке состояния</string>
+    <string name="statusbar_padding">Заполнение строки состояния</string>
+    <string name="statusbar_top_padding">Верхняя часть</string>
+    <string name="statusbar_left_padding">Заполнение слева</string>
+    <string name="statusbar_right_padding">Заполнение справа</string>
+</resources>
