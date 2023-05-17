@@ -12,4 +12,15 @@
     <color name="background_color_50">#B3FFFFFF</color>
     <color name="text_color_header">#323232</color>
     <color name="text_color_description">#616161</color>
+
+    <!-- Ambient lights-->
+    <color name="ambient_light_screen_color">#111111</color>
+    <color name="ambient_light_body_color">#323232</color>
+
+
+    <color name="barbg">#D8D8D8</color>
+    <color name="text">@android:color/system_neutral2_800</color>
+    <color name="acc">@android:color/system_accent1_400</color>
+    <color name="reverse">@android:color/system_accent1_1000</color>
+    <color name="border">@android:color/system_neutral2_200</color>
 </resources>
